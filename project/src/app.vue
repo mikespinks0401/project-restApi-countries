@@ -3,7 +3,7 @@ import { useThemeStore } from "~/stores/themeStore"
 const themeStore = useThemeStore()
 
 type theme = "dark" | "light" | "undefined"
-const loading = ref(true)
+// const loading = ref(true)
 onMounted(() => {
   const useTheme = themeStore.getThemeFromStorage()
   setTimeout(() => {
@@ -11,7 +11,7 @@ onMounted(() => {
       themeStore.setTheme(useTheme)
     }
   }, 500)
-  loading.value = false;
+  // loading.value = false;
 
 })
 
@@ -20,7 +20,7 @@ onMounted(() => {
 <template>
   <div>
     <div
-      v-if="loading"
+      v-if="!true"
       style="height: 100vh; display: flex; justify-content: center; align-items: center;"
     >
       <h2>Loading</h2>
@@ -56,6 +56,8 @@ onMounted(() => {
     </v-app>
   </div>
 </template>
-<style scoped>#homeLink {
+<style scoped>
+#homeLink {
   text-decoration: none;
-}</style>
+}
+</style>
