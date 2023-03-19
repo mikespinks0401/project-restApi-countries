@@ -1,0 +1,43 @@
+name: Deploy static Nuxt to Pages
+
+on: 
+  push:
+   #call this workflow whenever something is pushed to the master branch
+    branches: ["master"]
+  #allow workflow to be ran manually
+  workflow_dispatch:
+  #Sets permissions of the GITHUB_TOKEN to allow deployment to Github Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
+#allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build Job
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Detect package
+        id: detect-package-manager
+        run: |
+          if [ -f "${{ github.workspace }}/project/yarn.lock" ]; then
+            echo "manager=yarn" >> $GITHUB_OUTPUT
+            echo "command=install" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "${{ github.workspace }}/project/package.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=i" >>$GITHUB_OUTPUT
+            echo "runner=npx" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            echo "Unable to find or determine package manager"
+            echo "Checked at ${{github.workspace}}/project"
+            exit 1
+          fi
