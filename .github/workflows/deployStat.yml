@@ -24,6 +24,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with: 
+          branch: 
+            "master"
       - name: Detect package
         id: detect-package-manager
         run: |
@@ -38,4 +41,5 @@ jobs:
           else
             echo "Unable to find or determine package manager"
             echo "Checked at ${{github.workspace}}/project"
+            exit 1
           fi
