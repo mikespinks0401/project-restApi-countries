@@ -32,7 +32,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: 'project'
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -43,6 +42,7 @@ jobs:
           elif [ -f "${{ github.workspace }}/project/package.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
+            echo "runner=npx" >> $GITHUB_OUTPUT
             exit 0
           else
             echo "Unable to determine packager manager"
