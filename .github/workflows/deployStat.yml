@@ -7,8 +7,8 @@ on:
   #allow workflow to be ran manually
   workflow_dispatch:
   #Sets permissions of the GITHUB_TOKEN to allow deployment to Github Pages
-permission:
-  content: read
+permissions:
+  contents: read
   pages: write
   id-token: write
   
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses:action/checkout@v3
+        uses: action/checkout@v3
         with:
           path: 'project'
       - name: Detect package
