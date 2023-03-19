@@ -11,9 +11,6 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-defaults:
-  run:
-    working-directory: ./project
     
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -35,20 +32,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          path: ./project
       - name: Detect package manager
         id: detect-package-manager
-        working-directory: ./project
+        
         run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+          if [ -f "${{ github.workspace }}/project/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
+          elif [ -f "${{ github.workspace }}/project/package.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx" >> $GITHUB_OUTPUT
             exit 0
           else
             echo "Unable to determine packager manager"
@@ -57,33 +51,38 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-        with:
+          node-version: "18"
+          run: |
+            cd project
+            yarn
+          #cache: ${{ steps.detect-package-manager.outputs.manager }}
+      #- name: Setup Pages
+        #uses: actions/configure-pages@v3
+        #with:
           # Automatically inject router.base in your Nuxt configuration file and set
           # target to static (https://nuxtjs.org/docs/configuration-glossary/configuration-target/).
           #
           # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: nuxt
+         # static_site_generator: nuxt
       - name: Restore cache
         uses: actions/cache@v3
         with:
           path: |
-            dist
-            .nuxt
+            .output
+            public
           key: ${{ runner.os }}-nuxt-build-${{ hashFiles('dist') }}
           restore-keys: |
             ${{ runner.os }}-nuxt-build-
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: cd project && ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export with Nuxt
-        run: ${{ steps.detect-package-manager.outputs.manager }} run generate
+        run: |
+          cd project
+          ${{ steps.detect-package-manager.outputs.manager }} run generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./dist
+          path: project/.output/public
 
   # Deployment job
   deploy:
