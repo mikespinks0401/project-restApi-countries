@@ -54,7 +54,8 @@ jobs:
           node-version: "18"
           run: |
             cd project
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+            yarn
+          #cache: ${{ steps.detect-package-manager.outputs.manager }}
       #- name: Setup Pages
         #uses: actions/configure-pages@v3
         #with:
