@@ -1,0 +1,29 @@
+name: Deploy static Nuxt to Pages
+
+on: 
+  push:
+   #call this workflow whenever something is pushed to the master branch
+    branches: ["master"]
+  #allow workflow to be ran manually
+  workflow_dispatch:
+  #Sets permissions of the GITHUB_TOKEN to allow deployment to Github Pages
+permission:
+  content: read
+  pages: write
+  id-token: write
+  
+#allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build Job
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses:action/checkout@v3
+        with:
+          path: 'project'
+      - name: Detect package
