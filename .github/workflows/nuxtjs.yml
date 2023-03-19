@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 defaults:
   run:
-    working-directory: project
+    working-directory: ./project
     
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -39,6 +39,7 @@ jobs:
           path: ./project
       - name: Detect package manager
         id: detect-package-manager
+        working-directory: project
         run: |
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
