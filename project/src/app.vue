@@ -1,25 +1,20 @@
 <script setup lang="ts">
-import { useThemeStore } from "~/stores/themeStore"
-const themeStore = useThemeStore()
 
-type theme = "dark" | "light" | "undefined"
-// const loading = ref(true)
-onMounted(() => {
-  const useTheme = themeStore.getThemeFromStorage()
-  setTimeout(() => {
-    if (useTheme != null) {
-      themeStore.setTheme(useTheme)
-    }
-  }, 500)
-  // loading.value = false;
-
-})
 
 </script>
 
 <template>
   <div>
-    <div
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
+</template>
+<style scoped></style>
+
+
+
+    <!-- <div
       v-if="!true"
       style="height: 100vh; display: flex; justify-content: center; align-items: center;"
     >
@@ -53,11 +48,4 @@ onMounted(() => {
       <v-main class="bg-surface">
         <NuxtPage />
       </v-main>
-    </v-app>
-  </div>
-</template>
-<style scoped>
-#homeLink {
-  text-decoration: none;
-}
-</style>
+    </v-app> -->

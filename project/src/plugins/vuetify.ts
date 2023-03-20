@@ -8,9 +8,6 @@ export default defineNuxtPlugin (nuxtApp => {
         directives,
         components,
         blueprint: md3,
-        aliases:{
-            
-        }
     })
     nuxtApp.vueApp.use(vuetify)
 })
