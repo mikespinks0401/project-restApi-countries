@@ -3,7 +3,7 @@ on:
   push:
     branches: [nuxt]
 env:
-  BUILD_FOLDER: .output/public # or .output/public/yourrepositoryname/
+  BUILD_FOLDER: project/.output/public # or project/.output/public/yourrepositoryname/
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,6 +17,7 @@ jobs:
           cache: 'yarn'
       
       - run: |
+          cd project
           yarn install
           yarn generate
       - name: Init new repo in $BUILD_FOLDER and commit generated files
