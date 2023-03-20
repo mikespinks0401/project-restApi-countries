@@ -16,15 +16,20 @@ const props = defineProps({
             rounded="1"
             width="100%"
             style="max-width: 320px;"
+            elevation="4"
         >
-            <v-img
-                width="100%"
-                :src="props.image"
-                height="170"
-                aspect-ration="16/9"
-                cover
-            />
-            <v-card-text class="d-flex flex-column">
+            <v-sheet 
+            elevation="2"
+            >
+                <v-img
+                    width="100%"
+                    :src="props.image"
+                    height="170"
+                    aspect-ration="16/9"
+                    cover
+                />
+            </v-sheet>
+            <v-card-text class="cardBody d-flex flex-column">
                 <p class="font-weight-bold">{{ props.name }}</p>
                 <p> Population: {{ props.population }} </p>
                 <p>Region: {{ props.region }}</p>
@@ -34,3 +39,6 @@ const props = defineProps({
         </v-card>
     </div>
 </template>
+
+<style >
+</style>

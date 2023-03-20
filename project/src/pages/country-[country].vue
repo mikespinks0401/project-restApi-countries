@@ -83,10 +83,11 @@ const goBack = () => {
                 <!-- {{ country?.flags }} -->
                 <v-col cols="6">
                     <v-img
-                        class=""
+                        class="border"
                         height="500"
                         cover
                         :src="useCountry?.flags.svg"
+                        
                     >
 
                     </v-img>
@@ -124,4 +125,5 @@ const goBack = () => {
 <style>
 #countryDescription {
     line-height: 2.1;
-}</style>
+}
+</style>

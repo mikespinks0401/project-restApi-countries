@@ -19,14 +19,14 @@ onMounted(() => {
     <div>
         <v-app :theme="themeStore.useTheme" >
             <v-app-bar>
-                <v-app-bar-title>
+                <v-app-bar-title >
                     <NuxtLink
                         id="homeLink"
                         to="/"
                     >
                         Where in The World
                     </NuxtLink>
-                </v-app-bar-title>
+                </v-app-bar-title >
                 <v-spacer />
                 <div class="d-flex align-center px-4">
                     <v-btn
@@ -36,7 +36,7 @@ onMounted(() => {
                     >
 
                     </v-btn>
-                    <p class="font-weight-bold" >{{ themeStore.useTheme === "light" ? "dark mode" : "light mode" }} </p>
+                    <p> {{ themeStore.useTheme === "light" ? "dark mode" : "light mode" }} </p>
                 </div>
             </v-app-bar>
             <v-main class="bg-surface">

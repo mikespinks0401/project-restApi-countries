@@ -38,9 +38,6 @@ const regions = [
     "Africa", "Americas", "Asia", "Europe", "Oceania"
 ]
 //  style="width: 200px; mid-width: 200px; max-width: 200px;"
-const goToCountry = (country: string) => {
-    window.open(`/country-${country}`)
-}
 
 const filterCountries = () => {
     if (useFilter.value == "") {
@@ -68,6 +65,7 @@ const clearFilter = () => {
     useFilter.value = ""
     useCountries.value = ogCountries.value
 }
+const countryLink = (name: string) => `country-${name}` 
 </script>
 
 <template>
@@ -113,17 +111,14 @@ const clearFilter = () => {
                         cols="12"
                         sm="3"
                     >
-                        <button
-                            @click="goToCountry(country.name.common)"
-                            class="w-100"
-                        >
+                        <NuxtLink :to="countryLink(country.name.common)">
                             <CountryCard
                                 :name="country.name.common"
                                 :image="country.flags.svg"
                                 :population="country.population"
                                 :region="country.region"
                             />
-                        </button>
+                        </NuxtLink>
                     </v-col>
 
                 </template>
