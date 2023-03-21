@@ -50,7 +50,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
-          cache: ${{ github.workspace }}/project/${{ steps.detect-package-manager.outputs.manager }}
+          cache: "yarn"
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Restore cache
