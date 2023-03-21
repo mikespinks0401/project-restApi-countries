@@ -46,18 +46,8 @@ jobs:
             echo "Unable to determine packager manager"
             exit 1
           fi
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
-          cache: "yarn"
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            output/public
       - name: Install dependencies
         run: cd project && ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export with Nuxt
