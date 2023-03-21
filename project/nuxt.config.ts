@@ -7,10 +7,4 @@ export default defineNuxtConfig({
     build:{
         transpile:["vuetify"],
     },
-    vite:{
-        appType:"spa",
-        base:'/project-restApi-countries/',
-        build:
-    },
-
 })
