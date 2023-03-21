@@ -50,19 +50,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
-          cache: project/${{ steps.detect-package-manager.outputs.manager }}
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Restore cache
         uses: actions/cache@v3
         with:
           path: |
-            output
-            public
+            output/public
       - name: Install dependencies
-        run: cd project || ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: cd project && ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export with Nuxt
-        run: cd project || ${{ steps.detect-package-manager.outputs.manager }} run generate
+        run: cd project && ${{ steps.detect-package-manager.outputs.manager }} run generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
