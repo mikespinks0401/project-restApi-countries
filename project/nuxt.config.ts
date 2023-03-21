@@ -10,12 +10,7 @@ export default defineNuxtConfig({
     vite:{
         appType:"spa",
         base:'/project-restApi-countries/',
-        build:{
-            
-        },
-        vue:{
-            
-        } 
+        build:
     },
 
 })
