@@ -4,6 +4,9 @@ export default defineNuxtConfig({
     ssr: false,
     css: ["vuetify/lib/styles/main.css", "@mdi/font/css/materialdesignicons.min.css"],
     modules:["@pinia/nuxt"],
+    app:{
+        baseURL: "/project-restApi-countries/"
+    },
     build:{
         transpile:["vuetify"],
     },
