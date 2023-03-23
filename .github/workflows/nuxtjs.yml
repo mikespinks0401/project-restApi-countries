@@ -52,8 +52,12 @@ jobs:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: change director and Setup Pages
         run: |
-          cd project
-          mikespinks0401/configure-pages@main --statice_site_generator=nuxt3
+              cd project
+              git clone https://github.com/mikespinks0401/configure-pages.git
+              cd configure-pages
+              git checkout main
+              npm install
+              npm run configure -- --static_site_generator=nuxt3
 #         uses: mikespinks0401/configure-pages@main
 #         with:
 #           # Automatically inject router.base in your Nuxt configuration file and set
