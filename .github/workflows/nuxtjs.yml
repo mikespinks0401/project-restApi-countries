@@ -31,8 +31,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Detect package manager
-    env:
-          WORKSPACE: "${{github.workspace}}"
         id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/package.json" ]; then
