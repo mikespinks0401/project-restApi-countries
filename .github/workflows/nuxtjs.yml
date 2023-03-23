@@ -53,7 +53,7 @@ jobs:
       - name: change director and Setup Pages
         run: |
           cd project
-          run mikespinks0401/configure-pages@main --statice_site_generator=nuxt3
+          mikespinks0401/configure-pages@main --statice_site_generator=nuxt3
 #         uses: mikespinks0401/configure-pages@main
 #         with:
 #           # Automatically inject router.base in your Nuxt configuration file and set
