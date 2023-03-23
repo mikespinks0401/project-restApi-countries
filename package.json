@@ -1,6 +1,0 @@
-{
-    "scripts":{
-        "install": "cd project && npm install",
-        "generate": "cd project && npm run generate"
-    }   
-}
