@@ -50,6 +50,8 @@ jobs:
         with:
           node-version: "16"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: change directory 
+        run: cd project
       - name: Setup Pages
         uses: mikespinks0401/configure-pages@main
         with:
