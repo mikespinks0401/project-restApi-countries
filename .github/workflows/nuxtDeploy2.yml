@@ -47,7 +47,7 @@ jobs:
         with:
           node-version: "18"
       - name: Setup Pages
-        uses: mikespinks0401/configure-pages@da0f01302972fb1f809a11111f20e6720f6a0b76
+        uses: mikespinks0401/configure-pages@main
         with:
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: nuxt3
