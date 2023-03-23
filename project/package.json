@@ -1,8 +1,5 @@
 {
   "private": true,
-  "overrides": {
-    "vue": "latest"
-  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
