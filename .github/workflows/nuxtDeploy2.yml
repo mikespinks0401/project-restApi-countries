@@ -48,7 +48,7 @@ jobs:
           node-version: "18"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
-        uses: mikespinks0401/configure-pages@main
+        uses: mikespinks0401/configure-pages@da0f01302972fb1f809a11111f20e6720f6a0b76
         with:
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: nuxt3
@@ -64,7 +64,7 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export with Nuxt
-        run: ${{ steps.detect-package-manager.outputs.manager }} run generate
+        run: ${{ steps.detect-package-manager.outputs.manager }} generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
