@@ -51,7 +51,7 @@ jobs:
         uses: mikespinks0401/configure-pages@main
         with:
           # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: 'nuxt3'
+          static_site_generator: nuxt3
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -68,7 +68,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: .output/public
+          path: ./.output/public
 
   # Deployment job
   deploy:
