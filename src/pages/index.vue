@@ -79,8 +79,8 @@ const countryLink = (name: string) => `country-${name}`
                 >
                     <v-text-field
                         @input="textFilter"
-                        variant="plain"
-                        label="Search"
+                        variant="solo"
+                        label="Search Country"
                         v-model="filterString"
                     ></v-text-field>
                 </v-col>
@@ -111,14 +111,12 @@ const countryLink = (name: string) => `country-${name}`
                         cols="12"
                         sm="3"
                     >
-                        <NuxtLink :to="countryLink(country.name.common)">
                             <CountryCard
                                 :name="country.name.common"
                                 :image="country.flags.svg"
                                 :population="country.population"
                                 :region="country.region"
                             />
-                        </NuxtLink>
                     </v-col>
 
                 </template>
@@ -130,5 +128,9 @@ const countryLink = (name: string) => `country-${name}`
 <style>
 a:hover {
     cursor: pointer;
+}
+
+.NuxtLink{
+    text-decoration: none;
 }
 </style>
