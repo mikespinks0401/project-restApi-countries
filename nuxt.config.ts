@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     modules:["@pinia/nuxt"],
     app:{
         cdnURL: "https://mikespinks0401.github.io",
-        baseURL: "/project-restApi-countries/
+        baseURL: "/project-restApi-countries/"
     },
     build:{
         transpile:["vuetify"],
