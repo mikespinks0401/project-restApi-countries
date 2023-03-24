@@ -50,7 +50,7 @@ jobs:
         uses: mikespinks0401/configure-pages@main
         with:
           # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: nuxt3
+          static_site_generator: nuxt
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export with Nuxt
