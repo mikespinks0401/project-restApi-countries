@@ -48,7 +48,7 @@ const useTopLevelDomains = computed(() => {
     return domains
 })
 
-const useNativeName:string = (() => {
+const useNativeName: string = (() => {
     if (useCountry.value === null) {
         return
     }
@@ -65,16 +65,18 @@ const goBack = () => {
 
 <template>
     <div class="">
-        <button @click="goBack">Back</button>
         <div class="d-flex justify-center">
-            <div v-if="loading">
-                <p>LOading!!!</p>
+            <div class="h-100 d-flex flex-column justify-center align-center" v-if="loading">
+
+                <p>LOading...</p>
             </div>
             <div v-if="error">
                 <p>{{ error }}</p>
             </div>
         </div>
         <v-container>
+
+            <button @click="goBack" class="mb-4 "><h5 class="text-h5 font-weight-bold">Back</h5></button>
             <v-row
                 height="500"
                 class=""
@@ -87,7 +89,6 @@ const goBack = () => {
                         height="500"
                         cover
                         :src="useCountry?.flags.svg"
-                        
                     >
 
                     </v-img>
