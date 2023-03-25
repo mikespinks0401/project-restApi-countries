@@ -65,7 +65,7 @@ const clearFilter = () => {
     useFilter.value = ""
     useCountries.value = ogCountries.value
 }
-const countryLink = (name: string) => `country-${name}` 
+const countryLink = (name: string) => `country-${name}`
 </script>
 
 <template>
@@ -103,23 +103,28 @@ const countryLink = (name: string) => `country-${name}`
                 </v-col>
             </v-row>
             <v-row>
-                <template
-                    v-for="(country, index) in useCountries"
-                    :key="index"
-                >
-                    <v-col
-                        cols="12"
-                        sm="3"
+                <v-no-ssr>
+                    <template
+                        v-for="(country, index) in useCountries"
+                        :key="index"
                     >
+                        <v-col
+                            cols="12"
+                            sm="3"
+                        >
+
                             <CountryCard
                                 :name="country.name.common"
                                 :image="country.flags.svg"
                                 :population="country.population"
                                 :region="country.region"
+                                :key="index"
                             />
-                    </v-col>
 
-                </template>
+                        </v-col>
+
+                    </template>
+                </v-no-ssr>
             </v-row>
         </v-container>
     </div>
@@ -130,7 +135,7 @@ a:hover {
     cursor: pointer;
 }
 
-.NuxtLink{
+.NuxtLink {
     text-decoration: none;
 }
 </style>

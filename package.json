@@ -4,6 +4,8 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate && touch ./.output/public/.nojekyll",
+    "generate-local": "echo NUXT_APP_BASE_URL=/static1/ > .env && nuxt generate && touch ./.output/public/.nojekyll",
+    "generate-gh": "nuxt generate && touch ./.output/public/.nojekyll && echo NUXT_APP_BASE_URL=/project-restAPI-countries/ > .env && echo NUXT_APP_CDN_URL=https://mikespinks0401.github.io/project-restApi-countries >> .env",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

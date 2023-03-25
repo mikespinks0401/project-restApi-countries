@@ -10,7 +10,6 @@ export const useThemeStore = defineStore("theme", ()=>{
     }
     const getThemeFromStorage = () => {
       const storageTheme = localStorage.getItem("themePref")
-      console.log(storageTheme)
       if(storageTheme != "dark" && storageTheme != "light"){
         localStorage.setItem("themePref", useTheme.value)
         return
