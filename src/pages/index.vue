@@ -5,19 +5,17 @@ const ogCountries = ref<country[]>([])
 const filterString = ref("")
 const loading = ref(true)
 const useFilter = ref("")
-onMounted(async () => {
-    try {
-        const countries: country[] = await $fetch("https://restcountries.com/v3.1/all")
-        if (countries.length > 1) {
-            ogCountries.value = countries
-            useCountries.value = countries
-        }
-    } catch (e) {
-        console.log(e)
-    } finally {
-        loading.value = false
+try {
+    const countries: country[] = await $fetch("https://restcountries.com/v3.1/all")
+    if (countries.length > 1) {
+        ogCountries.value = countries
+        useCountries.value = countries
     }
-})
+} catch (e) {
+    console.log(e)
+} finally {
+    loading.value = false
+}
 
 type flag = {
     png: string,
@@ -103,28 +101,28 @@ const countryLink = (name: string) => `country-${name}`
                 </v-col>
             </v-row>
             <v-row>
-                <v-no-ssr>
-                    <template
-                        v-for="(country, index) in useCountries"
-                        :key="index"
-                    >
-                        <v-col
-                            cols="12"
-                            sm="3"
+                    <v-no-ssr>
+                        <template
+                            v-for="(country, index) in useCountries"
+                            :key="index"
                         >
+                            <v-col
+                                cols="12"
+                                sm="3"
+                            >
 
-                            <CountryCard
-                                :name="country.name.common"
-                                :image="country.flags.svg"
-                                :population="country.population"
-                                :region="country.region"
-                                :key="index"
-                            />
+                                <CountryCard
+                                    :name="country.name.common"
+                                    :image="country.flags.svg"
+                                    :population="country.population"
+                                    :region="country.region"
+                                    :key="index"
+                                />
 
-                        </v-col>
+                            </v-col>
 
-                    </template>
-                </v-no-ssr>
+                        </template>
+                    </v-no-ssr>
             </v-row>
         </v-container>
     </div>
