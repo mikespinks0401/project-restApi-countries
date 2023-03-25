@@ -13,12 +13,15 @@ const useCountry = `country-${props.name}`
 
 <template>
     <div class="d-flex justify-center">
-        <NuxtLink class="w-100" :to="useCountry">
-            <v-card
-                rounded="1"
-                width="100%"
-                style="max-width: 320px;"
-                elevation="4"
+        <v-card
+            rounded="1"
+            width="100%"
+            style="max-width: 320px;"
+            elevation="4"
+        >
+            <NuxtLink
+                class="w-100"
+                :to="useCountry"
             >
                 <v-sheet elevation="2">
                     <v-img
@@ -36,13 +39,14 @@ const useCountry = `country-${props.name}`
                     <p>Capital: {{ props.capital }}</p>
 
                 </v-card-text>
-            </v-card>
-        </NuxtLink>
+            </NuxtLink>
+        </v-card>
     </div>
 </template>
 
-<style scoped >
-a{
+<style scoped lang="">
+a {
     text-decoration: none;
 }
+
 </style>
