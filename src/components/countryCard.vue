@@ -44,7 +44,7 @@ const useCountry = `country-${props.name}`
     </div>
 </template>
 
-<style scoped lang="">
+<style scoped >
 a {
     text-decoration: none;
 }
