@@ -128,7 +128,7 @@ const countryLink = (name: string) => `country-${name}`
     </div>
 </template>
 
-<style>
+<style >
 a:hover {
     cursor: pointer;
 }
