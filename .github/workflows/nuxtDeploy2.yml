@@ -1,7 +1,3 @@
-# Sample workflow for building and deploying a Nuxt site to GitHub Pages
-#
-# To get started with Nuxt see: https://nuxtjs.org/docs/get-started/installation
-#
 name: Deploy Nuxt site to Pages
 
 on:
@@ -23,6 +19,7 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
+
 jobs:
   # Build job
   build:
@@ -33,13 +30,13 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          if [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/yarn.lock" ]; then
+          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
+            exit 0
+          elif [ -f "${{ github.workspace }}/package.json" ]; then
+            echo "manager=npm" >> $GITHUB_OUTPUT
+            echo "command=ci" >> $GITHUB_OUTPUT
             exit 0
           else
             echo "Unable to determine packager manager"
@@ -49,15 +46,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Setup Pages
-        uses: mikespinks0401/configure-pages@main
-        with:
-          static_site_generator: 'nuxt3'
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Generate Static files
-        run: ${{ steps.detect-package-manager.outputs.manager }} run generate
+      - name: Static HTML export with Nuxt
+        run: ${{ steps.detect-package-manager.outputs.manager }} generate-gh
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

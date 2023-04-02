@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate && touch ./.output/public/.nojekyll",
+    "generate-local": "echo NUXT_APP_BASE_URL=/static1/ > .env && nuxt generate && touch ./.output/public/.nojekyll",
+    "generate-gh": "echo NUXT_APP_BASE_URL=/project-restApi-countries/ > .env && echo NUXT_APP_CDN_URL=https://mikespinks0401.github.io/project-restApi-countries >> .env && . ./.env && nuxt generate && touch ./.output/public/.nojekyll",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "^3.3.1"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.1.96",
+    "@pinia/nuxt": "^0.4.7",
+    "pinia": "^2.0.33",
+    "vuetify": "^3.1.4"
+  }
+}
