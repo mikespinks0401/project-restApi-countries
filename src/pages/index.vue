@@ -7,6 +7,7 @@ const loading = ref(true)
 const useFilter = ref("")
 try {
     const countries: country[] = await $fetch("https://restcountries.com/v3.1/all")
+    console.log(countries)
     if (countries.length > 1) {
         ogCountries.value = countries
         useCountries.value = countries
@@ -116,7 +117,9 @@ const countryLink = (name: string) => `country-${name}`
                                     :image="country.flags.svg"
                                     :population="country.population"
                                     :region="country.region"
+                                    :capital="country.capital[0]"
                                     :key="index"
+
                                 />
 
                             </v-col>
