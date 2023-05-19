@@ -5,6 +5,7 @@ export interface flag {
     alt: string
 }
 export interface country {
+    borders: string[],
     name: {
         common: string,
         nativeName: object
@@ -15,5 +16,10 @@ export interface country {
     region: string,
     subregion: string,
     flags: flag,
-    topLevelDomain: string[]
+    topLevelDomain: string[],
+    languages: string[],
+    currencies: {
+        name: string,
+        symbole: string
+    }[] 
 }
