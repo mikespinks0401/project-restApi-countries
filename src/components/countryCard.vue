@@ -8,7 +8,7 @@ const props = defineProps({
 
 })
 
-const useCountry = `country-${props.name}`
+const thisCountry = `country-${props.name}`
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const useCountry = `country-${props.name}`
         >
             <NuxtLink
                 class="w-100"
-                :to="useCountry"
+                :to="thisCountry"
             >
                 <v-sheet elevation="2">
                     <v-img
